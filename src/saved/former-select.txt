@@ -1,0 +1,79 @@
+<template>
+  <select class="full-width form-control">
+    <slot></slot>
+  </select>
+</template>
+
+<script lang="ts">
+const windowObject: any = window;
+const $: any = windowObject.jQuery;
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+
+@Component
+export default class SelectBox extends Vue {
+  @Prop() private options!: any[];
+  @Prop() private config!: any;
+  @Prop() private placeholder!: string;
+  @Prop() private value!: any;
+
+  @Watch('value', { immediate: true, deep: true })
+  onchange(value: any) {
+    $(this.$el)
+      .val(value)
+      .trigger('change.select2');
+  }
+
+  get isMultiple() {
+    return $(this.$el).attr('multiple');
+  }
+
+  mounted() {
+    var vm = this;
+    $(this.$el)
+      // initialize select2
+      .select2(this.getConfig())
+      .val(this.value)
+      .trigger('change')
+      .on('change', function() {
+        const value = $(this).val();
+        const changed = vm.selectedChanged(value);
+        if (changed) {
+          vm.$emit('input', value);
+          vm.$emit('change');
+        }
+      });
+  }
+
+  getConfig() {
+    const config = this.config || {};
+    return Object.assign(config, {
+      data: this.options,
+      placeholder: this.placeholder || 'Select option',
+    });
+  }
+
+  selectedChanged(newValue: any) {
+    // Check if this select-box has a multiple attribute
+    // If so, compare their values directly
+    if (!this.isMultiple) {
+      return this.value != newValue;
+    }
+
+    // Else, do array comparison
+    const value = this.value || [];
+    newValue = newValue || [];
+    if (value.length !== newValue.length) return true;
+
+    const same = value.every((x: any) => newValue.includes(x));
+    return !same;
+  }
+
+  destroyed() {
+    $(this.$el)
+      .off()
+      .select2('destroy');
+  }
+}
+</script>
+
+<style scoped></style>

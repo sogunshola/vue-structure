@@ -1,4 +1,4 @@
-# vue-template
+# nutrifit-admin
 
 ## Project setup
 ```
