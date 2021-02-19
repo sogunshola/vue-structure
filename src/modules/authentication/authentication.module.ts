@@ -8,7 +8,7 @@ import {
 import store from '@/store';
 import { LoginUser, VerifyToken } from './authentication.api';
 import { UserLoginDTO } from './authentication.model';
-import { initialUnencryptedStorage } from '../../store/secure-storage';
+import { PreserveState } from '../../store/secure-storage';
 
 const name = 'authentication';
 
@@ -16,7 +16,8 @@ const name = 'authentication';
   store,
   name,
   dynamic: true,
-  preserveState: Boolean(initialUnencryptedStorage[name]),
+  namespaced: true,
+  preserveState: PreserveState(name),
 })
 class AuthenticationModule extends VuexModule {
   public user: any = {};

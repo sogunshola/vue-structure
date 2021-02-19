@@ -1,15 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 import createPersistedState from 'vuex-persistedstate';
 import { secureStorage } from './secure-storage';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [
     createPersistedState({
-      key: 'nutrifit-admin',
+      key: 'authentication',
+      paths: ['authentication'],
       storage: {
         getItem: (key) => secureStorage.get(key),
         setItem: (key, value) => secureStorage.set(key, value),
@@ -17,12 +18,8 @@ export default new Vuex.Store({
       },
     }),
   ],
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+  state: {},
+  mutations: {},
+  actions: {},
+  modules: {},
+});
