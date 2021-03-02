@@ -1,4 +1,3 @@
-
 import { HttpClient } from '../../config/http';
 import { PaginationOptions } from '../interfaces/pagination-options.interface';
 
@@ -6,7 +5,7 @@ export class AbstractService extends HttpClient {
   // public resource!: string;
   // interface Model;
 
-  async getAll(pagination?: PaginationOptions) {
+  async getAll(pagination?: PaginationOptions, ...args: any) {
     return await this.get('', { params: pagination });
   }
 
@@ -18,11 +17,11 @@ export class AbstractService extends HttpClient {
     return await this.get(id);
   }
 
-  async create(payload: any) {
+  async create(payload: any, ...args: any) {
     return await this.post(``, payload);
   }
 
-  async update(payload: any) {
+  async update(payload: any, ...args: any) {
     return await this.put(payload.id, payload);
   }
 
