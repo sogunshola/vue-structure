@@ -21,11 +21,11 @@
 //   public data: any[] = [];
 
 //   @Mutation
-//   SAMPLE(data: any[]) {
+//   LOAD(data: any[]) {
 //     this.data = data;
 //   }
 
-//   @Action({ commit: 'SAMPLE' })
+//   @Action({ commit: 'LOAD' })
 //   async getAll() {}
 // }
 

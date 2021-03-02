@@ -8,6 +8,7 @@ declare module 'vue/types/vue' {
     handleError(error: any): any;
     toastSuccess(message: string): any;
     toastError(message: string): any;
+    isLoading: boolean;
     // errors: any;
   }
 }

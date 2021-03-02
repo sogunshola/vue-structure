@@ -6,6 +6,8 @@ import { showError } from '../helpers';
 
 @Component
 export class GlobalMixins extends Vue {
+  isLoading: boolean = false;
+
   public getError(fieldName: any) {
     const app: any = this;
     return app.errors.first(fieldName);

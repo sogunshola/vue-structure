@@ -18,6 +18,7 @@ import VueChatScroll from 'vue-chat-scroll';
 // import VCalendar from 'v-calendar';
 // import StarRating from 'vue-star-rating';
 import Vuetify from 'vuetify';
+import MoneyFormat from 'vue-money-format';
 import { GlobalMixins } from './shared/mixins';
 // import store from './store';
 import ElementUI from 'element-ui';
@@ -35,7 +36,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import 'vue-select/dist/vue-select.css';
 import 'vue-datetime/dist/vue-datetime.css';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
-import 'vuetify/dist/vuetify.min.css';
+// import 'vuetify/dist/vuetify.min.css';
 
 const $: any = jQuery;
 
@@ -53,6 +54,7 @@ const swlOptions: any = {
 Vue.use(VueChatScroll);
 Vue.use(Notifications);
 Vue.use(VeeValidate);
+Vue.use(ElementUI);
 
 const socket = io(process.env.VUE_APP_SOCKET_URL, {
   autoConnect: false,
@@ -67,7 +69,7 @@ Vue.component('datetime', Datetime);
 Vue.component('multiselect', Multiselect);
 // Vue.component('star-rating', StarRating);
 // Vue.component('footer-bar', footerbar);
-// Vue.component('money-format', MoneyFormat);
+Vue.component('money-format', MoneyFormat);
 
 Vue.mixin(GlobalMixins);
 
