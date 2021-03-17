@@ -20,6 +20,8 @@ import VueChatScroll from 'vue-chat-scroll';
 import Vuetify from 'vuetify';
 import MoneyFormat from 'vue-money-format';
 import { GlobalMixins } from './shared/mixins';
+import DataTable from './components/DataTable.vue';
+import CustomModal from './components/CustomModal.vue';
 // import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -70,6 +72,8 @@ Vue.component('multiselect', Multiselect);
 // Vue.component('star-rating', StarRating);
 // Vue.component('footer-bar', footerbar);
 Vue.component('money-format', MoneyFormat);
+Vue.component('custom-table', DataTable);
+Vue.component('custom-modal', CustomModal);
 
 Vue.mixin(GlobalMixins);
 
