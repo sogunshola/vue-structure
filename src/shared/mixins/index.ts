@@ -31,21 +31,11 @@ export class GlobalMixins extends Vue {
   public handleError(error: any) {
     helpers.HIDE_LOADING();
     if (!error.response) {
-      return this.$notify({
-        // group: 'foo',
-        title: 'Error',
-        text: error.message,
-        type: 'error',
-      });
+      return this.toastError(error.message);
     }
     const response = error.response.data;
     console.log('error', response);
-    this.$notify({
-      // group: 'foo',
-      title: 'Error',
-      text: response.message,
-      type: 'error',
-    });
+    this.toastError(response.message);
   }
 
   public toastSuccess(message: string) {
