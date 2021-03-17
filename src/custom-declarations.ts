@@ -9,6 +9,9 @@ declare module 'vue/types/vue' {
     toastSuccess(message: string): any;
     toastError(message: string): any;
     isLoading: boolean;
+    loadJs(): any;
+    globalLoader(status: boolean, message?: string): any;
+    modal(modalId: string, show: boolean): any;
     // errors: any;
   }
 }

@@ -51,4 +51,28 @@ export class GlobalMixins extends Vue {
       type: 'error',
     });
   }
+
+  public modal(modalId: string, show: boolean) {
+    const $: any = jQuery;
+    show ? $(`#${modalId}`).modal('show') : $(`#${modalId}`).modal('hide');
+  }
+
+  public loadJs() {
+    let main = document.createElement('script');
+    main.setAttribute('src', '/assets/js/core.js');
+    main.setAttribute('id', 'main-js');
+
+    try {
+      $('#main-js').remove();
+      setTimeout(() => {
+        document.body.appendChild(main);
+      }, 1000);
+    } catch (error) {
+      document.body.appendChild(main);
+    }
+  }
+
+  public globalLoader(status: boolean, message?: string) {
+    status ? helpers.SHOW_LOADING(message) : helpers.HIDE_LOADING();
+  }
 }
