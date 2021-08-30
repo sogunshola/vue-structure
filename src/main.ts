@@ -9,9 +9,11 @@ import VeeValidate from 'vee-validate';
 import VueSweetalert2 from 'vue-sweetalert2';
 import Notifications from 'vue-notification';
 import vSelect from 'vue-select';
+import vueDropzone from 'vue2-dropzone';
 import * as jQuery from 'jquery';
 import { Datetime } from 'vue-datetime';
 import error from './components/validation-error.vue';
+import InputTag from 'vue-input-tag';
 // import pagination from './components/pagination.vue';
 import Multiselect from 'vue-multiselect';
 import VueChatScroll from 'vue-chat-scroll';
@@ -22,11 +24,14 @@ import MoneyFormat from 'vue-money-format';
 import { GlobalMixins } from './shared/mixins';
 import DataTable from './components/DataTable.vue';
 import CustomModal from './components/CustomModal.vue';
+import CustomButton from './components/CustomButton.vue';
 // import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import lang from 'element-ui/lib/locale/lang/en';
 import locale from 'element-ui/lib/locale';
+import VueCurrencyInput from 'vue-currency-input';
+import CKEditor from 'ckeditor4-vue';
 import './custom-declarations';
 locale.use(lang);
 
@@ -34,12 +39,12 @@ Vue.config.productionTip = false;
 
 import 'sweetalert2/dist/sweetalert2.min.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
+import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 // import './static/icon/iconfont'
 import 'vue-select/dist/vue-select.css';
 import 'vue-datetime/dist/vue-datetime.css';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 // import 'vuetify/dist/vuetify.min.css';
-
 const $: any = jQuery;
 
 const pluginOptions = {
@@ -54,9 +59,13 @@ const swlOptions: any = {
 // VUE USE
 // Vue.use(Notifications);
 Vue.use(VueChatScroll);
+Vue.use(CKEditor);
 Vue.use(Notifications);
+Vue.use(VueSweetalert2, swlOptions);
+
 Vue.use(VeeValidate);
 Vue.use(ElementUI);
+Vue.use(VueCurrencyInput, pluginOptions);
 
 const socket = io(process.env.VUE_APP_SOCKET_URL, {
   autoConnect: false,
@@ -74,6 +83,9 @@ Vue.component('multiselect', Multiselect);
 Vue.component('money-format', MoneyFormat);
 Vue.component('custom-table', DataTable);
 Vue.component('custom-modal', CustomModal);
+Vue.component('custom-button', CustomButton);
+Vue.component('image-upload', vueDropzone);
+Vue.component('input-tags', InputTag);
 
 Vue.mixin(GlobalMixins);
 

@@ -161,13 +161,11 @@
                       aria-haspopup="true"
                       aria-expanded="false"
                       ><img
-                        :src="user.avatar.fullPath"
+                        src=""
                         class="img-fluid rounded-circle"
                         alt="profile"
                       />
-                      <span class="live-icon"
-                        >{{ user.firstName }} {{ user.lastName }}</span
-                      >
+                      <span class="live-icon">{{ user.fullName }}</span>
                     </a>
                     <div
                       class="dropdown-menu dropdown-menu-right"
@@ -216,8 +214,11 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Topbar extends Vue {
-  @Prop() private user!: any;
-  private isLoading: boolean = false;
+  get user() {
+    return authenticationStore.user;
+  }
+  // @Prop() private user!: any;
+  // private isLoading: boolean = false;
 
   // private logout() {
   //   this.isLoading = true;

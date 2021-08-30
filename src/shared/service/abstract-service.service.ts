@@ -10,7 +10,7 @@ export class AbstractService extends HttpClient {
   }
 
   async list() {
-    return await this.get(`/list/get`);
+    return await this.get(`list/get`);
   }
 
   async findOne(id: string) {

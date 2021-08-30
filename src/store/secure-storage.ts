@@ -2,7 +2,7 @@
 
 import SecureLS from 'secure-ls';
 
-export const storageKey = 'sample-app'; // the key used by localStorage
+export const storageKey = 'plugcounty-app'; // the key used by localStorage
 
 export const secureStorage = new SecureLS({
   isCompression: false,

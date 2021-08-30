@@ -6,10 +6,10 @@
       <!-- Start Logobar -->
       <div class="logobar">
         <a href="/app" class="logo logo-large">
-          <img src="/assets/images/logo_bg.png" class="img-fluid" alt="logo" />
+          <img src="/assets/images/logo.png" class="img-fluid" alt="logo" />
         </a>
         <a href="/app" class="logo logo-small">
-          <img src="/assets/images/logo_bg.png" class="img-fluid" alt="logo" />
+          <img src="/assets/images/logo.png" class="img-fluid" alt="logo" />
         </a>
       </div>
       <!-- End Logobar -->
@@ -17,75 +17,120 @@
       <div class="navigationbar">
         <ul class="vertical-menu">
           <li class="vertical-header">Main</li>
+
           <li>
-            <a href="/app/pending-lawyers">
-              <i class="ri-dashboard-line"></i>
-              <span>Pending Lawyers</span>
+            <router-link :to="{ name: 'Products Page' }">
+              <i class="ri-shopping-bag-2-line"></i>
+              <span>Products</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'Orders' }">
+              <i class="ri-shopping-cart-line"></i>
+              <span
+                >Orders
+                <span class="badge badge-info">{{
+                  orderMeta.ordersPending.length
+                }}</span></span
+              >
               <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
+            </router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'Articles' }">
+              <i class="ri-article-line"></i>
+              <span>Articles</span>
+              <!-- <i class="ri-arrow-right-s-line"></i> -->
+            </router-link>
+          </li>
+
+          <!-- <li>
+            <router-link :to="{ name: 'Sub Categories Page' }">
+              <i class="ri-dashboard-line"></i>
+              <span>Sub Categories</span>
+            </router-link>
+          </li> -->
+
+          <!-- <li>
+            <router-link :to="{ name: 'DeliveryLocations' }">
+              <i class="ri-qr-code-line"></i>
+              <span>Delivery Locations</span>
+            </router-link>
+          </li> -->
+
+          <li class="vertical-header">Configurations</li>
+          <li>
+            <router-link :to="{ name: 'Categories Page' }">
+              <i class="ri-dashboard-line"></i>
+              <span>Product Categories</span>
+              <!-- <i class="ri-arrow-right-s-line"></i> -->
+            </router-link>
           </li>
 
           <li>
-            <a href="/app/pending-firms">
-              <i class="ri-dashboard-line"></i>
-              <span>Pending Firms</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
-          </li>
-          <li>
-            <a href="/app/manage-expertise">
-              <i class="ri-dashboard-line"></i>
-              <span>Manage Expertise</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
-          </li>
-          <li>
-            <a href="/app/manage-topics">
-              <i class="ri-dashboard-line"></i>
-              <span>Manage Topics</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
-          </li>
-          <li>
-            <a href="/app/manage-admins">
-              <i class="ri-dashboard-line"></i>
-              <span>Manage Admins</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
+            <router-link :to="{ name: 'Brands Page' }">
+              <i class="ri-dvd-line"></i>
+              <span>Brands</span>
+            </router-link>
           </li>
 
           <li>
-            <a href="/app/manage-articles">
-              <i class="ri-dashboard-line"></i>
-              <span>Manage Articles</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
+            <router-link :to="{ name: 'Collections Page' }">
+              <i class="ri-folder-2-line"></i>
+              <span>Collections</span>
+            </router-link>
+          </li>
+
+          <!-- <li>
+            <router-link :to="{ name: 'Tags Page' }">
+              <i class="ri-hashtag"></i>
+              <span>Tags</span>
+            </router-link>
+          </li> -->
+
+          <li>
+            <router-link :to="{ name: 'Sizes Page' }">
+              <i class="ri-shape-2-line"></i>
+              <span>Sizes</span>
+            </router-link>
           </li>
 
           <li>
-            <a href="/app/manage-requests">
-              <i class="ri-dashboard-line"></i>
-              <span>Manage Requests</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
+            <router-link :to="{ name: 'Promo Codes Page' }">
+              <i class="ri-qr-code-line"></i>
+              <span>Promo Codes</span>
+            </router-link>
           </li>
 
           <li>
-            <a href="/app/manage-packages">
-              <i class="ri-dashboard-line"></i>
-              <span>Manage Packages</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
+            <a href="javaScript:void();">
+              <i class="ri-map-pin-2-line"></i>
+              <span>Delivery Locations</span>
+              <i class="ri-arrow-right-s-line"></i>
             </a>
+
+            <ul class="vertical-submenu">
+              <li>
+                <router-link :to="{ name: 'DeliveryLocations' }">
+                  <!-- <i class="ri-qr-code-line"></i> -->
+                  <span>Delivery Countries</span>
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="{ name: 'DeliveryAreas' }">
+                  <!-- <i class="ri-qr-code-line"></i> -->
+                  <span>Delivery Areas</span>
+                </router-link>
+              </li>
+            </ul>
           </li>
 
-          <li>
-            <a href="/app/chats">
+          <!-- <li>
+            <router-link :to="{ name: 'Categories Page' }">
               <i class="ri-dashboard-line"></i>
-              <span>Chat</span>
-              <!-- <i class="ri-arrow-right-s-line"></i> -->
-            </a>
-          </li>
-          <!-- <li class="vertical-header">Control</li> -->
+              <span>Categories</span>
+            </router-link>
+          </li> -->
 
           <!-- <li>
             <a href="javaScript:void();">
@@ -110,9 +155,14 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit, Ref } from 'vue-property-decorator';
+import { ordersStore } from '../modules/orders/orders.store';
 
 @Component
 export default class Sidebar extends Vue {
+  get orderMeta() {
+    return ordersStore.meta;
+  }
+
   mounted() {
     const app: Sidebar = this;
     $(document).ready(function() {

@@ -10,6 +10,7 @@ declare module 'vue-datetime';
 declare module 'vue-gallery';
 declare module 'ckeditor4-vue';
 declare module 'vue-select';
+declare module 'vue2-dropzone';
 declare module 'vue2-editor';
 declare module '@johmun/vue-tags-input';
 declare module 'vue-input-tag';

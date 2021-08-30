@@ -6,7 +6,7 @@
 //   VuexModule,
 // } from 'vuex-module-decorators';
 // import store from '@/store';
-// import { PreserveState } from '@/store/storage';
+// import { PreserveState } from '@/store/secure-storage';
 
 // const name = 'sample';
 
@@ -26,7 +26,10 @@
 //   }
 
 //   @Action({ commit: 'LOAD' })
-//   async getAll() {}
+//   async getAll() {
+//     const response = await service.getAll();
+//     return response.data;
+//   }
 // }
 
 // export const sampleStore = getModule(SampleModule);

@@ -2,11 +2,17 @@ import Component from 'vue-class-component';
 import Vue from 'vue';
 import moment from 'moment';
 import { helpers } from '../helpers/helper.module';
-import { showError } from '../helpers';
+import {
+  GlobalEvent,
+  responseHandler,
+  showError,
+} from '../helpers';
+import { apiConfigService } from '../../config/api.config';
 
 @Component
 export class GlobalMixins extends Vue {
   isLoading: boolean = false;
+  formEvent: string = '';
 
   public getError(fieldName: any) {
     const app: any = this;
@@ -29,6 +35,7 @@ export class GlobalMixins extends Vue {
   }
 
   public handleError(error: any) {
+    this.isLoading = false;
     helpers.HIDE_LOADING();
     if (!error.response) {
       return this.toastError(error.message);
@@ -74,5 +81,22 @@ export class GlobalMixins extends Vue {
 
   public globalLoader(status: boolean, message?: string) {
     status ? helpers.SHOW_LOADING(message) : helpers.HIDE_LOADING();
+  }
+
+  showForm(item: any) {
+    GlobalEvent.$emit(this.formEvent, item);
+  }
+
+  async uploadFile(file: File) {
+    const formdata = new FormData();
+    formdata.append('file', file);
+    const response = await apiConfigService.request().post('uploads', formdata);
+    const output = responseHandler(response);
+    return output;
+  }
+
+  public moneyFormat(number: number) {
+    // console.log('number is', number);
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 }

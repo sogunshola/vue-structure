@@ -1,5 +1,9 @@
 import { authenticationStore } from '../../modules/authentication/authentication.module';
 import { VueEasyJwt } from 'vue-easy-jwt';
+import Vue from 'vue';
+import moment from 'moment';
+
+export const GlobalEvent = new Vue();
 
 export function responseHandler(response: any) {
   const output: {
@@ -9,16 +13,21 @@ export function responseHandler(response: any) {
   } = response.data;
 
   // tslint:disable-next-line: no-console
-  console.log(output);
-  if (output.status) {
-    return output;
-  }
+  return output;
+  // console.log(output);
+  // if (output.status) {
+  //   return output;
+  // }
 
-  throw output;
+  // throw output;
 }
 
 export function showError(message: string) {
   throw new Error(message);
+}
+
+export function readableDate(date: string) {
+  return moment(date).format('DD MMM YYYY');
 }
 
 export class AuthenticationService {
